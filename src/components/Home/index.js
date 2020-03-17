@@ -1,11 +1,10 @@
 import React from 'react';
 
 import "./home.css";
+import AgroMenu from '../agroMenu';
 
 const Home = () => (
-    <div className="testes">
-        <p>RTESTES DO VINICIUS</p>
-    </div>
+    <AgroMenu></AgroMenu>
 );
 
 export default Home;
