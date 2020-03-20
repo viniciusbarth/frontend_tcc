@@ -2,22 +2,29 @@ import React from 'react';
 
 import "./agroMenu.css";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
+
 const AgroMenu = () => (
-    <React.Fragment>
-<aside class="sidebar">
-  <div id="leftside-navigation" class="nano">
-    <ul class="nano-content">
-      <li className="row">
-        <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-         href="index.html"><i class="fa fa-dashboard"></i><span>Home</span></a>
-      </li>
-      <li className="row">
-        <a class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-         href="index.html"><i class="fa fa-dashboard"></i><span>Cadastros</span></a>
-      </li>
-    </ul>
+<React.Fragment>
+
+  <div class="sidenav">
+    <a href="#home">Home</a>
+    <a href="#cadastros">Cadastros</a>
+    <a href="#AnalisePreditiva">Análise Preditiva</a>
+    <a href="#contato">Contato</a>
+
+    <p>Versão 1.0.0.0</p>
+    <p>Sistema AgroSoftware</p>
   </div>
-</aside>
+
+  <div class="main">
+    <div class="topnav">
+      <span href="" className="iconLogout">
+      <FontAwesomeIcon icon={faSignOutAlt}></FontAwesomeIcon>
+      </span>
+    </div>
+  </div>
 </React.Fragment>
 );
 
