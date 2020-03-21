@@ -4,6 +4,7 @@ import "./login.css";
 
 import axios from 'axios'
 import { login } from "../../services/auth";
+import {ToastsContainer, ToastsStore} from 'react-toasts';
 
 const BASE_URL = 'http://localhost:8080/';
 
@@ -34,11 +35,12 @@ class Login extends React.Component{
     await axios.post(BASE_URL+"login", this.state)
       .then((res) =>{
         console.log('sucesso');
+        ToastsStore.success("Sucesso!")
         login(res.headers.authorization.replace("Bearer ", ""));
         this.props.history.push("/home");
       })
       .catch(error => {
-        console.log(error.response)
+        ToastsStore.error(error.response.data.error.message)
       });
 
   };
@@ -47,6 +49,7 @@ class Login extends React.Component{
     return(
       <div className="telaLogin"> 
         <div className="login">
+          <ToastsContainer store={ToastsStore}/>
             <h1 className="card-title">AgroSoftware</h1>
             <form className="form-signin">
               <div className="form-label-group padd-10">
