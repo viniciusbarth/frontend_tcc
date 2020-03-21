@@ -4,13 +4,19 @@ import "./login.css";
 
 import axios from 'axios'
 
+const BASE_URL = 'http://localhost:8080/';
 
 class Login extends React.Component{
 
-  state = {
-    user : '',
-    password: ''
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      email : '',
+      senha: ''
+    }
   }
+
 
   onChange = (event) =>{
     const valor = event.target.value;
@@ -21,9 +27,20 @@ class Login extends React.Component{
     })
   }
 
-  onSubmit = (event) => {
-    event.preventEvent();
-  }
+  onSubmit = async e => {
+    e.preventDefault();
+
+    await axios.post(BASE_URL+"login", this.state)
+    .catch(error => {
+      console.log(error.response)
+    });
+
+  };
+
+  // .then((res) =>{
+  //   console.log('sucesso');
+  //   this.props.history.push("/home");
+  // })
 
   render(){
     return(
@@ -32,14 +49,14 @@ class Login extends React.Component{
             <h1 className="card-title">AgroSoftware</h1>
             <form className="form-signin">
               <div className="form-label-group padd-10">
-                <input type="text" id="inputUser" name="user" onChange={this.onChange} value={this.state.user} className="form-control" placeholder="Nome de usuario" required></input>
+                <input type="text" id="inputUser" name="email" onChange={this.onChange} value={this.state.email} className="form-control" placeholder="Nome de usuario" required></input>
               </div>
 
               <div className="form-label-group padd-10">
-                <input type="password" id="inputPassword" name="password" onChange={this.onChange} value={this.state.password} className="form-control" placeholder="Password" required></input>
+                <input type="password" id="inputPassword" name="senha" onChange={this.onChange} value={this.state.senha} className="form-control" placeholder="Password" required></input>
               </div>
 
-              <button className="buttonLogin" type="submit" onClick={this.onSubmit} name="" value="Login">Login</button>
+              <button className="buttonLogin" type="btn btn-primary" onClick={this.onSubmit} name="" value="Login">Login</button>
               
               <span className="subtext">
               <a href="#">Esqueceu a sua senha?</a><br></br>
