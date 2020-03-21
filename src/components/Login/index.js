@@ -3,6 +3,7 @@ import React from 'react';
 import "./login.css";
 
 import axios from 'axios'
+import { login } from "../../services/auth";
 
 const BASE_URL = 'http://localhost:8080/';
 
@@ -31,16 +32,16 @@ class Login extends React.Component{
     e.preventDefault();
 
     await axios.post(BASE_URL+"login", this.state)
-    .catch(error => {
-      console.log(error.response)
-    });
+      .then((res) =>{
+        console.log('sucesso');
+        login(res.headers.authorization.replace("Bearer ", ""));
+        this.props.history.push("/home");
+      })
+      .catch(error => {
+        console.log(error.response)
+      });
 
   };
-
-  // .then((res) =>{
-  //   console.log('sucesso');
-  //   this.props.history.push("/home");
-  // })
 
   render(){
     return(
@@ -49,7 +50,7 @@ class Login extends React.Component{
             <h1 className="card-title">AgroSoftware</h1>
             <form className="form-signin">
               <div className="form-label-group padd-10">
-                <input type="text" id="inputUser" name="email" onChange={this.onChange} value={this.state.email} className="form-control" placeholder="Nome de usuario" required></input>
+                <input type="email" id="inputUser" name="email"  onChange={this.onChange} value={this.state.email} className="form-control" placeholder="Nome de usuario" required></input>
               </div>
 
               <div className="form-label-group padd-10">
