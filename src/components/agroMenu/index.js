@@ -2,9 +2,6 @@ import React from 'react';
 
 import "./agroMenu.css";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
-
 class AgroMenu extends React.Component{
 
   onsubmit = () => {
@@ -17,21 +14,15 @@ class AgroMenu extends React.Component{
     return(
       <React.Fragment>
 
-        <div class="sidenav">
+        <div className="sidenav">
           <a onClick={this.home}>Home</a>
           <a onClick={this.onsubmit}>Cadastros</a>
-          <a href="#AnalisePreditiva">Análise Preditiva</a>
+          <a href="#AnalisePreditiva">Análise</a>
           <a href="#contato">Contato</a>
 
-          <p>Versão 1.0.0.0</p>
-          <p>Sistema AgroSoftware</p>
-        </div>
-
-        <div class="main">
-          <div class="topnav">
-            <span href="" className="iconLogout">
-            <FontAwesomeIcon icon={faSignOutAlt}></FontAwesomeIcon>
-            </span>
+          <div className="version">
+            <p>Versão 1.0.0.0</p>
+            <p>Sistema AgroSoftware</p>
           </div>
         </div>
       </React.Fragment>

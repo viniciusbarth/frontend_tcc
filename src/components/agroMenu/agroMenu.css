@@ -2,23 +2,26 @@ body {
   font-family: "Lato", sans-serif;
 }
 
+.version{
+  font-size: 13px;
+}
+
 .sidenav {
   height: 100%;
-  width: 230px;
+  width: 127px;
   position: fixed;
   z-index: 1;
   top: 0;
   left: 0;
   background-color: #111;
   overflow-x: hidden;
-  padding-top: 20px;
-  padding: 33px;
+  padding: 7px;
 }
 
 .sidenav a {
   padding: 9px 16px 7px 16px;
   text-decoration: none;
-  font-size: 25px;
+  font-size: 13px;
   color: #818181;
   display: block;
   text-align: center;
@@ -27,15 +30,12 @@ body {
 }
 
 .sidenav p{
-  top: 57%;
   color: white;
-  text-align: center;
-  line-height: 9px;
 }
 
 .sidenav a:hover {
   color: #f1f1f1;
-  font-size: 28px;
+  font-size: 18px;
   white-space: nowrap;
 }
 
