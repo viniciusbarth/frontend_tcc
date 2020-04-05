@@ -50,7 +50,9 @@ class Login extends React.Component{
       <div className="telaLogin"> 
         <div className="login">
           <ToastsContainer store={ToastsStore}/>
-            <h1 className="card-title">AgroSoftware</h1>
+            <div className="col-md-12 img-login">
+              <img src={require('./../../assets/img/imagemLogin.png')}  style={{width: 160,marginBottom: 37}}/>
+            </div>
             <form className="form-signin">
               <div className="form-label-group padd-10">
                 <input type="email" id="inputUser" name="email"  onChange={this.onChange} value={this.state.email} className="form-control" placeholder="Nome de usuario" required></input>

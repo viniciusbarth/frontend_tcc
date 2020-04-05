@@ -77,3 +77,7 @@ body {
 .iconLogout {
   cursor: pointer;
 }
+
+.nav-item{
+  margin-right: 20px !important;
+}

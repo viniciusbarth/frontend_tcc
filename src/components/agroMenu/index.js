@@ -1,6 +1,8 @@
 import React from 'react';
 
-import 'bootswatch/dist/cerulean/bootstrap.min.css'
+import { Link } from 'react-router-dom'
+
+import 'bootswatch/dist/flatly/bootstrap.min.css'
 
 class AgroMenu extends React.Component{
 
@@ -16,8 +18,7 @@ class AgroMenu extends React.Component{
 
   render(){
     return(
-      <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
-        <a className="navbar-brand" href="#">AgroSoftware</a>
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -25,10 +26,10 @@ class AgroMenu extends React.Component{
         <div className="collapse navbar-collapse" id="navbarColor01">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+              <Link to="/home"><img src={require('./../../assets/img/imagemLogin.png')}  style={{width: 63}}/></Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#/cadastros">Cadastros</a>
+              <Link className="nav-link" to="/cadastros">Cadastros</Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="#">Análise Preditiva</a>

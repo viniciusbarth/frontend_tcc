@@ -12,21 +12,24 @@ export default function FormPropriedade() {
 	};
 
 	return (
-		<div className="form-propriedade">
+		<div>
 			<AgroMenu></AgroMenu>
-			<form>
-				<h1>Cadastro de Propriedade</h1>
+			<div className="form-propriedade">
+				<form>
+					<h1>Cadastro de Propriedade</h1>
 
-				<div className="form-label-group">
-					<input name="name" placeholder="Nome da propriedade..."></input>
-				</div>
+					<div className="form-label-group">
+						<input name="name" placeholder="Nome da propriedade..."></input>
+					</div>
 
-				<div className="form-label-group">
-					<input name="name" placeholder="Principal agricultura..."></input>
-				</div>
+					<div className="form-label-group">
+						<input name="name" placeholder="Principal agricultura..."></input>
+					</div>
 
-				<button className="buttonCadastrar" value="Cadastrar">Cadastrar</button>
-			</form>
+					<button className="buttonCadastrar" value="Cadastrar">Cadastrar</button>
+				</form>
+			</div>
 		</div>
 	)
+
 };
