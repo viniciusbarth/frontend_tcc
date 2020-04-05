@@ -1,7 +1,7 @@
 import React from 'react';
 
 import "./style.css";
-import AgroMenu from '../agroMenu';
+import AgroMenu from '../../AgroMenu';
 
 export default function FormPropriedade() {
 

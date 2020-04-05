@@ -2,9 +2,8 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import Login from './components/Login/index';
-import Home from './components/Home/index';
-import AgroMenu from './components/agroMenu';
-import AgroPropriedade from './components/agroPropriedade';
+import Home from './components/views/Home/index';
+import AgroPropriedade from './components/views/Cadastro';
 
 const App = () => (
   <BrowserRouter>
@@ -12,8 +11,7 @@ const App = () => (
       <Route exact path="/" component={Login}/>
       <Route path="/login" component={Login}/>
       <Route path="/home" component={Home}/>
-      <Route path="/home" component={AgroMenu}/>
-      <Route path="/propriedade" component={AgroPropriedade}/>
+      <Route path="/cadastros" component={AgroPropriedade}/>
     </Switch>
   </BrowserRouter>
 )

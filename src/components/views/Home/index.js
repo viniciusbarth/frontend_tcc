@@ -1,7 +1,7 @@
 import React from 'react';
 
 import "./home.css";
-import AgroMenu from './../agroMenu';
+import AgroMenu from '../../AgroMenu';
 
 const Home = () => (
     <AgroMenu></AgroMenu>
