@@ -14,20 +14,26 @@ export default function FormPropriedade() {
 	return (
 		<div>
 			<AgroMenu></AgroMenu>
-			<div className="form-propriedade">
+			<ol className="breadcrumb">
+				<li className="breadcrumb-item active">Home > Cadastros</li>
+			</ol>
+			<div style={{margin: 20}}>
+				<div className="jumbotron">
 				<form>
-					<h1>Cadastro de Propriedade</h1>
-
-					<div className="form-label-group">
-						<input name="name" placeholder="Nome da propriedade..."></input>
-					</div>
-
-					<div className="form-label-group">
-						<input name="name" placeholder="Principal agricultura..."></input>
-					</div>
-
-					<button className="buttonCadastrar" value="Cadastrar">Cadastrar</button>
+					<fieldset>
+						<legend>Cadastro de Propriedade</legend>
+						<div className="form-group">
+							<label htmlFor="nomePropriedade">Nome Propriedade</label>
+							<input type="text" className="form-control" id="nomePropriedade" placeholder="Ex:. Fazenda Boa Fé"/>
+						</div>
+						<div className="form-group">
+							<label htmlFor="descPropriedade">Descrição da Propriedade</label>
+							<input type="text" className="form-control" id="descPropriedade" placeholder="Descrição geral da propriedade"/>
+						</div>
+						<button type="button" className="btn btn-success">Salvar</button>
+					</fieldset>
 				</form>
+				</div>
 			</div>
 		</div>
 	)
