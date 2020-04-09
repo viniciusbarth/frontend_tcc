@@ -48,7 +48,7 @@ class AgroMenu extends React.Component{
             </li>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Options
+                Cadastros
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem href="#cadastro-usuario">

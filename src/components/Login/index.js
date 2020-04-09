@@ -59,7 +59,7 @@ class Login extends React.Component{
               </div>
 
               <div className="form-label-group padd-10">
-                <input type="password" id="inputPassword" name="password" onChange={this.onChange} value={this.state.senha} className="form-control" placeholder="Password" required></input>
+                <input type="password" id="inputPassword" name="senha" onChange={this.onChange} value={this.state.senha} className="form-control" placeholder="Password" required></input>
               </div>
 
               <button className="buttonLogin" type="btn btn-primary" onClick={this.onSubmit} name="" value="Login">Login</button>
