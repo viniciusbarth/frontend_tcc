@@ -42,7 +42,6 @@ class Login extends React.Component{
       .catch(error => {
         ToastsStore.error(error.response.data.error.message)
       });
-
   };
 
   render(){

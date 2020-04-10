@@ -44,23 +44,23 @@ class AgroMenu extends React.Component{
               <Link to="/home"><img src={require('./../../assets/img/logotipo.png')}  style={{width: 63}}/></Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="#">Análise Preditiva</a>
+              <a className="nav-link" href="/">Análise Preditiva</a>
             </li>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
                 Cadastros
               </DropdownToggle>
               <DropdownMenu right>
-                <DropdownItem href="#cadastro-usuario">
+                <DropdownItem href="/cadastro-usuario">
                   Cadastro de Usuário
                 </DropdownItem>
-                <DropdownItem href="#cadastro-propriedade">
+                <DropdownItem href="/cadastro-propriedade">
                   Cadastro de Propriedade
                 </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
             <li className="nav-item">
-              <a className="nav-link" href="#">Sobre</a>
+              <a className="nav-link" href="/sobre">Sobre</a>
             </li>
           </ul>
         </div>
