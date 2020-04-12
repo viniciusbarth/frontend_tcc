@@ -54,21 +54,15 @@ class Login extends React.Component{
             </div>
             <form className="form-signin">
               <div className="form-label-group padd-10">
-                <input type="email" id="inputUser" name="email"  onChange={this.onChange} value={this.state.email} className="form-control" placeholder="Nome de usuario" required></input>
+                <input type="email" id="inputUser" name="email"  onChange={this.onChange} value={this.state.email} className="form-control" placeholder="Nome de usuário" required></input>
               </div>
 
               <div className="form-label-group padd-10">
-                <input type="password" id="inputPassword" name="senha" onChange={this.onChange} value={this.state.senha} className="form-control" placeholder="Password" required></input>
+                <input type="password" id="inputPassword" name="senha" onChange={this.onChange} value={this.state.senha} className="form-control" placeholder="Senha" required></input>
               </div>
 
               <button className="buttonLogin" type="btn btn-primary" onClick={this.onSubmit} name="" value="Login">Login</button>
               
-              <span className="subtext">
-              <a href="#">Esqueceu a sua senha?</a><br></br>
-              </span>
-              <span className="subtext">
-              <a href="#">Ainda não possui uma conta?</a>
-              </span>
             </form>
         </div>
       </div>

@@ -1,0 +1,14 @@
+.sobre{
+    margin-top: 30px;
+}
+
+.titleSobre{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.sobre > p{
+    color: black;
+    margin: 50px;
+    text-align: justify;
+    line-height: 2.0;
+}

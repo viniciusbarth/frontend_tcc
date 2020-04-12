@@ -4,6 +4,7 @@ import { logout, isAuthenticated } from "./services/auth";
 import Login from './components/Login/index';
 import Home from './components/views/Home/index';
 import FormPropriedade from './components/views/Cadastro/formPropriedade';
+import Sobre from './components/views/Sobre';
 import FormUser from './components/views/Cadastro/formUser';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -38,23 +39,29 @@ const App = () => (
   <>
     <BrowserRouter>
       <Switch>
-        {/* <Route exact path="/" component={Home} /> */}
         <PrivateRoute exact path="/home" component={Home} />
         <NoAuthRoute path="/login" component={Login} />
         <PrivateRoute exact path="/cadastro-propriedade" component={FormPropriedade} />
         <PrivateRoute exact path="/cadastro-usuario" component={FormUser} />
+        <PrivateRoute exact path="/sobre" component={Sobre} />
         <PrivateRoute
           exact
           path="/sobre"
           component={() => {
-            return <Redirect to={{ pathname: "/" }} />;
+            return <Redirect to={{ pathname: "/sobre" }} />;
+          }}
+        />
+        <Route
+          path="/"
+          component={() => {
+            return isAuthenticated() ? <Redirect to={{ pathname: "/home" }}/> : <Redirect to={{ pathname: "/login" }}/>;
           }}
         />
         <Route
           path="/logout"
           component={() => {
             logout();
-            return <Redirect to={{ pathname: "/" }} />;
+            return <Redirect to={{ pathname: "/login" }} />;
           }}
         />
         <Route path="*" component={() => <h1>Página não encontrada</h1>} />

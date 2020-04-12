@@ -10,14 +10,13 @@ import {ToastsContainer, ToastsStore} from 'react-toasts';
 const BASE_URL = 'http://localhost:8080/';
 
 export default class Login extends React.Component {
-
 	
 	render(){
 		return (
 			<div>
 				<AgroMenu></AgroMenu>
 				<ol className="breadcrumb">
-					<li className="breadcrumb-item active">Home > Cadastros</li>
+					<li className="breadcrumb-item active">Home > Cadastro de Propriedade</li>
 				</ol>
 				<div style={{ margin: 20 }}>
 					<div className="jumbotron">

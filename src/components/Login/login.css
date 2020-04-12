@@ -57,11 +57,13 @@ h1{
     outline: none;
     height: 40px;
     color: white;
+    background-color: transparent;
     font-size: 16px;
 }
 
 .login input[type="email"]:hover, input[type="password"]:hover{
-    border-bottom: 3px solid rgb(248, 73, 73);
+    border-bottom: 3px solid #19d629;
+    background-color: transparent;
     /* font-size: 20px; */
 }
 
@@ -79,9 +81,8 @@ h1{
 }
 
 .login .buttonLogin:hover{
-    background: rgb(248, 73, 73);
+    background: #19d629;
     cursor: pointer;
-    font-size: 25px;
 }
 
 .login a{
@@ -95,7 +96,7 @@ h1{
 
 .login a:hover {
     transition: 0.2s;
-    color: #ff4d4d;
+    color: #19d629;
 }
 
 .form-signin{
