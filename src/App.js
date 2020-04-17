@@ -53,6 +53,7 @@ const App = () => (
         />
         <Route
           path="/"
+          exact
           component={() => {
             return isAuthenticated() ? <Redirect to={{ pathname: "/home" }}/> : <Redirect to={{ pathname: "/login" }}/>;
           }}

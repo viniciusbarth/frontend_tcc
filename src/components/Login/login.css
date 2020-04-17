@@ -1,12 +1,12 @@
 
 .telaLogin{
     width: 100%;
-    max-width: 1120px;
     height: 100vh;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: #ecf0f1;
 }
 
 .login{
