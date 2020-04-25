@@ -50,7 +50,7 @@ class Login extends React.Component{
         <div className="login">
           <ToastsContainer store={ToastsStore}/>
             <div className="col-md-12 img-login">
-              <img src={require('./../../assets/img/logotipo.png')}  style={{width: 160,marginBottom: 37}}/>
+              <img src={require('./../../assets/img/logotipo.png')} alt="logo" style={{width: 160,marginBottom: 37}}/>
             </div>
             <form className="form-signin">
               <div className="form-label-group padd-10">

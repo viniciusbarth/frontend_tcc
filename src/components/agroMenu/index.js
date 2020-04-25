@@ -34,11 +34,11 @@ class AgroMenu extends React.Component{
               <Link to="/home"><img src={require('./../../assets/img/logotipo.png')} alt="logo"  style={{width: 63}}/></Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">Análise Preditiva</a>
+              <a className="nav-link" href="/">Análise Preditiva | </a>
             </li>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
-                Cadastros
+                Cadastros 
               </DropdownToggle>
               <DropdownMenu right>
                 <DropdownItem href="/cadastro-usuario">
@@ -50,12 +50,12 @@ class AgroMenu extends React.Component{
               </DropdownMenu>
             </UncontrolledDropdown>
             <li className="nav-item">
-              <a className="nav-link" href="/sobre">Sobre</a>
+              <a className="nav-link" href="/sobre"> |  Sobre</a>
             </li>
           </ul>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a href="/logout"><FontAwesomeIcon icon={faSignOutAlt} size="2x" style={{color: "white"}}/></a>
+              <a href="/logout"><FontAwesomeIcon icon={faSignOutAlt} inverse="true" size="2x" style={{color: "white"}}/></a>
             </li>
           </ul>
         </div>

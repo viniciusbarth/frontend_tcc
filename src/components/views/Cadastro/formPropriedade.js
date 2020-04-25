@@ -3,12 +3,6 @@ import React from 'react';
 import "./style.css";
 import AgroMenu from '../../AgroMenu';
 
-import axios from 'axios'
-import { login } from "../../../services/auth";
-import {ToastsContainer, ToastsStore} from 'react-toasts';
-
-const BASE_URL = 'http://localhost:8080/';
-
 export default class Login extends React.Component {
 	
 	render(){

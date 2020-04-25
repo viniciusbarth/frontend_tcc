@@ -3,7 +3,6 @@ import React from 'react';
 import "./style.css";
 import AgroMenu from '../../AgroMenu';
 
-import axios from 'axios'
 import {ToastsStore} from 'react-toasts';
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
@@ -19,7 +18,7 @@ export default class FormUser extends React.Component{
 		  nome:'',
 		  email : '',
 		  senha: '',
-		  funcoes:'ROLE_USUARIO'
+		  funcoes:[]
 		}
 	  }
 	
@@ -31,6 +30,13 @@ export default class FormUser extends React.Component{
 		this.setState({
 		  [nomeDoCampo] : valor
 		})
+
+		if(nomeDoCampo === 'funcoes'){
+
+			this.setState({
+				[nomeDoCampo] : [valor]
+			})
+		}
 	  }
 	
 	  onSubmit = async e => {
@@ -38,11 +44,10 @@ export default class FormUser extends React.Component{
 	
 		await api.post("/usuarios", this.state)
 		  .then((res) =>{
-			ToastsStore.success("Sucesso!")
-			this.props.history.push("/home");
+				ToastsStore.success("Sucesso!");
 		  })
 		  .catch(error => {
-			ToastsStore.error(error.response.data.error.message)
+				ToastsStore.error(error.response.data)
 		  });
 	
 	  };
@@ -74,6 +79,16 @@ export default class FormUser extends React.Component{
 								<FormGroup>
 									<Label for="examplePassword">Senha</Label>
 									<Input type="password" name="senha" id="examplePassword" onChange={this.onChange} value={this.state.senha} placeholder="Digite sua senha" />
+								</FormGroup>
+							</Col>
+							<Col md={6}>
+								<FormGroup>
+									<Label for="funcoes">Funções</Label>
+									<Input type="select" name="funcoes" id="funcoes" onChange={this.onChange} value={this.state.funcoes}>
+										<option value="USUARIO">USUARIO</option>
+										<option value="OPERADOR">OPERADOR</option>
+										<option value="ADMIN">ADMIN</option>
+									</Input>
 								</FormGroup>
 							</Col>
 						</Row>
