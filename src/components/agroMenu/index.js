@@ -1,18 +1,12 @@
 import React from 'react';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons'
 import {
-  Collapse,
-  Navbar,
-  NavbarToggler,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink,
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem,
-  NavbarText
+  DropdownItem
 } from 'reactstrap';
 
 import { Link } from 'react-router-dom'
@@ -20,10 +14,6 @@ import { Link } from 'react-router-dom'
 import 'bootswatch/dist/flatly/bootstrap.min.css'
 
 class AgroMenu extends React.Component{
-
-  constructor(props) {
-    super(props);
-  }
 
   onClick = () => {
     
@@ -41,7 +31,7 @@ class AgroMenu extends React.Component{
         <div className="collapse navbar-collapse" id="navbarColor01">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <Link to="/home"><img src={require('./../../assets/img/logotipo.png')}  style={{width: 63}}/></Link>
+              <Link to="/home"><img src={require('./../../assets/img/logotipo.png')} alt="logo"  style={{width: 63}}/></Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/">Análise Preditiva</a>
@@ -61,6 +51,11 @@ class AgroMenu extends React.Component{
             </UncontrolledDropdown>
             <li className="nav-item">
               <a className="nav-link" href="/sobre">Sobre</a>
+            </li>
+          </ul>
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <a href="/logout"><FontAwesomeIcon icon={faSignOutAlt} size="2x" style={{color: "white"}}/></a>
             </li>
           </ul>
         </div>
