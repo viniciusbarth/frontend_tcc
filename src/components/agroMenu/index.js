@@ -55,7 +55,7 @@ class AgroMenu extends React.Component{
           </ul>
           <ul className="navbar-nav">
             <li className="nav-item">
-              <a href="/logout"><FontAwesomeIcon icon={faSignOutAlt} inverse="true" size="2x" style={{color: "white"}}/></a>
+              <a href="/logout"><FontAwesomeIcon icon={faSignOutAlt} size="2x" style={{color: "white"}}/></a>
             </li>
           </ul>
         </div>
