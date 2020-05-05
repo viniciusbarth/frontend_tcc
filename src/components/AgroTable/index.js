@@ -8,9 +8,8 @@ class AgroTable extends React.Component{
 
     const { usuarios } = this.props;
     console.log(usuarios);
-    if(usuarios !== undefined){
       this.renderRows = function(){
-        return this.state.data.map(user =>{
+        return usuarios.map(user =>{
           return(
             <tr key={user.email}>
               <td>{user.nome}</td>
@@ -19,15 +18,13 @@ class AgroTable extends React.Component{
           ) 
         })
       }
-    }
 
     return(
       <Table className="table table-dark"> 
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">testes</th>
-            <th scope="col">testes 2</th>
+            <th scope="col">nome</th>
+            <th scope="col">email</th>
           </tr>
         </thead>
         <tbody>

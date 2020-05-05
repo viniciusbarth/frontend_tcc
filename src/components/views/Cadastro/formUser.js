@@ -4,12 +4,10 @@ import "./style.css";
 import AgroMenu from '../../AgroMenu';
 
 import {ToastsStore, ToastsContainer} from 'react-toasts';
-import { Col, Row, Button, Form, FormGroup, Label, Input, Table  } from 'reactstrap';
+import { Col, Row, Button, Form, FormGroup, Label, Input  } from 'reactstrap';
 
 import api from "../../../services/api";
 import AgroTable from '../../AgroTable';
-
-// import Table from "../../AgroTable"
 
 
 export default class FormUser extends React.Component{
@@ -21,7 +19,8 @@ export default class FormUser extends React.Component{
 		  nome:'',
 		  email : '',
 		  senha: '',
-		  funcoes:[]
+			funcoes:[],
+			data:[]
 		}
 
 		this.state = this.stateInicial;
@@ -65,7 +64,6 @@ export default class FormUser extends React.Component{
 		.catch(error => {
 			ToastsStore.error(error.response.data)
 		});
-
 	}
 
 	render(){
