@@ -1,21 +1,39 @@
 import React from 'react';
 
+import { Table  } from 'reactstrap';
+
 class AgroTable extends React.Component{
+
   render(){
+
+    const { usuarios } = this.props;
+    console.log(usuarios);
+    if(usuarios !== undefined){
+      this.renderRows = function(){
+        return this.state.data.map(user =>{
+          return(
+            <tr key={user.email}>
+              <td>{user.nome}</td>
+              <td>{user.email}</td>
+            </tr>
+          ) 
+        })
+      }
+    }
+
     return(
-      <table class="table table-dark">
+      <Table className="table table-dark"> 
         <thead>
           <tr>
             <th scope="col">#</th>
+            <th scope="col">testes</th>
+            <th scope="col">testes 2</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-          </tr>
+          {this.renderRows()}
         </tbody>
-      </table> 
+      </Table> 
     );
   }
 }

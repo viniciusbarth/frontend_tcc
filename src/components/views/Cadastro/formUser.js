@@ -4,9 +4,10 @@ import "./style.css";
 import AgroMenu from '../../AgroMenu';
 
 import {ToastsStore, ToastsContainer} from 'react-toasts';
-import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { Col, Row, Button, Form, FormGroup, Label, Input, Table  } from 'reactstrap';
 
 import api from "../../../services/api";
+import AgroTable from '../../AgroTable';
 
 // import Table from "../../AgroTable"
 
@@ -56,21 +57,20 @@ export default class FormUser extends React.Component{
 		});
 	};
 
-	// async componentDidMount() {
-	// 	await api.get("/usuarios/all")
-	// 	.then((res) =>{
-	// 		this.setState({ data: res.data.content })
-	// 	})
-	// 	.catch(error => {
-	// 		ToastsStore.error(error.response.data)
-	// 	});
-	// }
+	async componentDidMount() {
+		await api.get("/usuarios/all")
+		.then((res) =>{
+			this.setState({ data: res.data })
+		})
+		.catch(error => {
+			ToastsStore.error(error.response.data)
+		});
 
+	}
 
 	render(){
 
-		const {nome,email,senha,funcoes} = this.state;
-
+	const {nome,email,senha,funcoes} = this.state;
 	return (
 		<div>
 			<AgroMenu></AgroMenu>
@@ -115,6 +115,8 @@ export default class FormUser extends React.Component{
 					</Form>
 				</div>
 			</div>
+			<AgroTable usuarios={this.state.data}></AgroTable>
 		</div>
-	)}
+	)
+}
 };
