@@ -14,8 +14,8 @@ class Login extends React.Component{
     super(props);
 
     this.state = {
-      email : '',
-      senha: ''
+      usuDsEmail : '',
+      usuDsSenha: ''
     }
   }
 
@@ -40,7 +40,7 @@ class Login extends React.Component{
         this.props.history.push("/home");
       })
       .catch(error => {
-        ToastsStore.error(error.response.data.error.message)
+        ToastsStore.error(error.response.data)
       });
   };
 
@@ -54,11 +54,11 @@ class Login extends React.Component{
             </div>
             <form className="form-signin">
               <div className="form-label-group padd-10">
-                <input type="email" id="inputUser" name="email"  onChange={this.onChange} value={this.state.email} className="form-control" placeholder="Nome de usuário" required></input>
+                <input type="email" id="inputUser" name="usuDsEmail"  onChange={this.onChange} value={this.state.usuDsEmail} className="form-control" placeholder="Nome de usuário" required></input>
               </div>
 
               <div className="form-label-group padd-10">
-                <input type="password" id="inputPassword" name="senha" onChange={this.onChange} value={this.state.senha} className="form-control" placeholder="Senha" required></input>
+                <input type="password" id="inputPassword" name="usuDsSenha" onChange={this.onChange} value={this.state.usuDsSenha} className="form-control" placeholder="Senha" required></input>
               </div>
 
               <button className="buttonLogin" type="btn btn-primary" onClick={this.onSubmit} name="" value="Login">Login</button>

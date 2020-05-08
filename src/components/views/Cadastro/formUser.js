@@ -16,10 +16,10 @@ export default class FormUser extends React.Component{
 		super(props);
 	
 		this.stateInicial = {
-		  nome:'',
-		  email : '',
-		  senha: '',
-			funcoes:[],
+			usuDsNome:'',
+			usuDsEmail : '',
+			usuDsSenha: '',
+			usuLsFuncoes:['USUARIO'],
 			data:[]
 		}
 
@@ -35,8 +35,8 @@ export default class FormUser extends React.Component{
 		[nomeDoCampo] : valor
 	})
 
-	if(nomeDoCampo === 'funcoes'){
-
+	if(nomeDoCampo === 'usuLsFuncoes'){
+		
 		this.setState({
 			[nomeDoCampo] : [valor]
 		})
@@ -49,6 +49,7 @@ export default class FormUser extends React.Component{
 	await api.post("/usuarios", this.state)
 		.then((res) =>{
 			this.setState(this.stateInicial);
+			this.componentDidMount();
 			ToastsStore.success("Usuário cadastrado com sucesso!");
 		})
 		.catch(error => {
@@ -68,7 +69,7 @@ export default class FormUser extends React.Component{
 
 	render(){
 
-	const {nome,email,senha,funcoes} = this.state;
+	const {usuDsNome,usuDsEmail,usuDsSenha,usuLsFuncoes} = this.state;
 	return (
 		<div>
 			<AgroMenu></AgroMenu>
@@ -82,26 +83,26 @@ export default class FormUser extends React.Component{
 						<Row form>
 						<Col md={6}>
 								<FormGroup>
-									<Label for="nome">Nome</Label>
-									<Input type="text" name="nome" id="nome" onChange={this.onChange} value={nome} placeholder="Digite um e-mail válido joaosilva@gmail.com" />
+									<Label for="usuDsNome">Nome</Label>
+									<Input type="text" name="usuDsNome" id="usuDsNome" onChange={this.onChange} value={usuDsNome} placeholder="Digite um e-mail válido joaosilva@gmail.com" />
 								</FormGroup>
 							</Col>
 							<Col md={6}>
 								<FormGroup>
-									<Label for="exampleEmail">E-mail</Label>
-									<Input type="email" name="email" id="exampleEmail" onChange={this.onChange} value={email} placeholder="Digite um e-mail válido joaosilva@gmail.com" />
+									<Label for="usuDsEmail">E-mail</Label>
+									<Input type="email" name="usuDsEmail" id="usuDsEmail" onChange={this.onChange} value={usuDsEmail} placeholder="Digite um e-mail válido joaosilva@gmail.com" />
 								</FormGroup>
 							</Col>
 							<Col md={6}>
 								<FormGroup>
-									<Label for="examplePassword">Senha</Label>
-									<Input type="password" name="senha" id="examplePassword" onChange={this.onChange} value={senha} placeholder="Digite sua senha" />
+									<Label for="usuDsSenha">Senha</Label>
+									<Input type="password" name="usuDsSenha" id="usuDsSenha" onChange={this.onChange} value={usuDsSenha} placeholder="Digite sua senha" />
 								</FormGroup>
 							</Col>
 							<Col md={6}>
 								<FormGroup>
-									<Label for="funcoes">Funções</Label>
-									<Input type="select" name="funcoes" id="funcoes" onChange={this.onChange} value={funcoes}>
+									<Label for="usuLsFuncoes">Funções</Label>
+									<Input type="select" name="usuLsFuncoes" id="usuLsFuncoes" onChange={this.onChange} value={usuLsFuncoes}>
 										<option value="USUARIO">USUARIO</option>
 										<option value="OPERADOR">OPERADOR</option>
 										<option value="ADMIN">ADMIN</option>
@@ -113,7 +114,7 @@ export default class FormUser extends React.Component{
 					</Form>
 				</div>
 			</div>
-			<AgroTable usuarios={this.state.data}></AgroTable>
+			<AgroTable data={this.state.data} columns={['id','nome','email']} table={'usuario'}></AgroTable>
 		</div>
 	)
 }
