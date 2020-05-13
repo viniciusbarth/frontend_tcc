@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 
 import "./style.css";
 import AgroMenu from '../../AgroMenu';
@@ -10,7 +10,7 @@ import api from "../../../services/api";
 import AgroTable from '../../AgroTable';
 
 
-export default class FormUser extends React.Component{
+class FormUser extends Component {
 
 	constructor(props) {
 		super(props);
@@ -43,6 +43,19 @@ export default class FormUser extends React.Component{
 	}
 	};
 
+
+	removeUser = id => {
+		api.delete("/usuarios/"+id)
+		.then((res) =>{
+			this.allUser()
+		})
+		.catch(error => {
+			ToastsStore.error(error)
+			console.log(error)
+		});
+  }
+
+
 	onSubmit = async e => {
 	e.preventDefault();
 
@@ -57,7 +70,7 @@ export default class FormUser extends React.Component{
 		});
 	};
 
-	async componentDidMount() {
+	async allUser() {
 		await api.get("/usuarios/all")
 		.then((res) =>{
 			this.setState({ data: res.data })
@@ -65,6 +78,10 @@ export default class FormUser extends React.Component{
 		.catch(error => {
 			ToastsStore.error(error.response.data)
 		});
+	}
+
+	async componentDidMount() {
+		this.allUser()
 	}
 
 	render(){
@@ -114,8 +131,9 @@ export default class FormUser extends React.Component{
 					</Form>
 				</div>
 			</div>
-			<AgroTable data={this.state.data} columns={['id','nome','email']} table={'usuario'}></AgroTable>
+			<AgroTable data={this.state.data} columns={['id','nome','email', 'Excluir', 'Editar']} table={'usuario'} removeUser={this.removeUser}></AgroTable>
 		</div>
 	)
 }
 };
+export default FormUser;
