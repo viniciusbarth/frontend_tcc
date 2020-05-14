@@ -44,8 +44,8 @@ class FormUser extends Component {
 	};
 
 
-	removeUser = id => {
-		api.delete("/usuarios/"+id)
+	removeUser = async id => {
+		await api.delete("/usuarios/"+id)
 		.then((res) =>{
 			this.allUser()
 		})
