@@ -13,6 +13,12 @@ class AgroTable extends React.Component{
 
     let { columns, table, removeUser, data } = this.props;
 
+    // usuLsFuncoes
+
+    this.disabledButton = (usuLsFuncoes) =>{
+      return usuLsFuncoes.indexOf("ADMIN") === -1 ? false : true 
+    };
+
     const TableBody = props => {
       let linhas;
         if(table === 'usuario'){
@@ -22,7 +28,7 @@ class AgroTable extends React.Component{
                     <td>{item.usuCdUsuario}</td>
                     <td>{item.usuDsNome}</td>
                     <td>{item.usuDsEmail}</td>
-                    <td><button onClick = { () => { props.removeUser(item.usuCdUsuario) }} className="waves-effect waves-light indigo lighten-2 btn">Remover</button></td>
+                    <td><button onClick = { () => { props.removeUser(item.usuCdUsuario) }}  disabled={this.disabledButton(item.usuLsFuncoes)} className="waves-effect waves-light indigo lighten-2 btn">Remover</button></td>
                     <td><a href="/logout"><FontAwesomeIcon icon={faEdit} size="2x" style={{color: "black"}}/></a></td>
                 </tr>
             );
