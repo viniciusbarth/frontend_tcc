@@ -20,6 +20,26 @@ export default class Login extends React.Component {
 		this.state = this.stateInicial;
 	};
 	
+	removePropriedade = async id => {
+		await api.delete("/propriedades/"+id)
+		.then((res) =>{
+			this.allPropriedades()
+		})
+		.catch(error => {
+			ToastsStore.error(error)
+			console.log(error)
+		});
+	}
+
+	async allPropriedades() {
+		await api.get("/propriedades/allpropriedades")
+		.then((res) =>{
+			this.setState({ data: res.data })
+		})
+		.catch(error => {
+			ToastsStore.error(error.response.data)
+		});
+	}
 	
 	onChange = (event) =>{
 		const valor = event.target.value;
@@ -67,7 +87,7 @@ export default class Login extends React.Component {
 						</form>
 					</div>
 				</div>
-				<AgroTable data={this.state.data} columns={['ID. da propriedade','Nome','Descrição','Excluir','Editar']} table={'propriedade'} ></AgroTable>
+				<AgroTable data={this.state.data} columns={['ID. da propriedade','Nome','Descrição','Excluir','Editar']} table={'propriedade'} removePropriedade={this.removePropriedade}></AgroTable>
 			</div>
 		)
 	}
