@@ -53,6 +53,10 @@ class FormUser extends Component {
 			ToastsStore.error(error)
 			console.log(error)
 		});
+	}
+	
+	editUser = item => {
+		this.setState(item);
   }
 
 
@@ -131,7 +135,7 @@ class FormUser extends Component {
 					</Form>
 				</div>
 			</div>
-			<AgroTable data={this.state.data} columns={['id','nome','email', 'Excluir', 'Editar']} table={'usuario'} removeUser={this.removeUser}></AgroTable>
+			<AgroTable data={this.state.data} columns={['id','nome','email', 'Excluir', 'Editar']} table={'usuario'} removeUser={this.removeUser} editUser={this.editUser}></AgroTable>
 		</div>
 	)
 }

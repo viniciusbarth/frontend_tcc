@@ -67,7 +67,7 @@ export default class Login extends React.Component {
 						</form>
 					</div>
 				</div>
-				<AgroTable data={this.state.data} columns={['ID. da propriedade','Nome','Descrição']} table={'propriedades'}></AgroTable>
+				<AgroTable data={this.state.data} columns={['ID. da propriedade','Nome','Descrição','Excluir','Editar']} table={'propriedade'} ></AgroTable>
 			</div>
 		)
 	}
