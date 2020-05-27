@@ -53,11 +53,9 @@ h1{
 .login input[type="email"], input[type="password"]{
     border: none;
     border-bottom: 1px solid white;
-    background: transparent;
     outline: none;
     height: 40px;
-    color: white;
-    background-color: transparent;
+    color: black;
     font-size: 16px;
 }
 

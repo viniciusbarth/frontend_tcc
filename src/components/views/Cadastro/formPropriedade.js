@@ -14,6 +14,9 @@ export default class Login extends React.Component {
 		this.stateInicial = {
 			proDsNome:'',
 			proDsDescricao : '',
+			proFlCultivo: '',
+			proFlUf: '',
+			proVlTamanhoHectares:'',
 			data:[]
 		}
 
@@ -30,6 +33,10 @@ export default class Login extends React.Component {
 			console.log(error)
 		});
 	}
+
+	editPropriedade = item => {
+		this.setState(item);
+  	}
 
 	async allPropriedades() {
 		await api.get("/propriedades/allpropriedades")
@@ -60,14 +67,43 @@ export default class Login extends React.Component {
 		});
 	}
 
+	onSubmit = async e => {
+		e.preventDefault();
+		const {data, ...restConfig} = this.state;
+		if(!this.state.proCdPropriedade){
+			await api.post("/propriedades", restConfig)
+				.then((res) =>{
+					this.setState(this.stateInicial);
+					this.componentDidMount();
+					ToastsStore.success("Propriedade cadastrada com sucesso!");
+				})
+				.catch(error => {
+					ToastsStore.error(error.response.data.error.message)
+				});
+		}else{
+			await api.put("/propriedades/"+this.state.proCdPropriedade, restConfig)
+			.then((res) =>{
+				this.setState(this.stateInicial);
+				this.componentDidMount();
+				ToastsStore.success("Propriedade cadastrada com sucesso!");
+			})
+			.catch(error => {
+				ToastsStore.error(error.response.data.error.message)
+			});
+		}
+	};
+
 
 	render(){
+
+		const {proDsNome,proDsDescricao,proFlCultivo,proFlUf,proVlTamanhoHectares} = this.state;
+
 		return (
 			<div>
 				<AgroMenu></AgroMenu>
 				<ToastsContainer store={ToastsStore}/>
 				<ol className="breadcrumb">
-					<li className="breadcrumb-item active">Home > Cadastro de Propriedade</li>
+					<li className="breadcrumb-item active">Cadastro de Propriedade</li>
 				</ol>
 				<div style={{ margin: 20 }}>
 					<div className="jumbotron">
@@ -75,19 +111,31 @@ export default class Login extends React.Component {
 							<fieldset>
 								<legend>Cadastro de Propriedade</legend>
 								<div className="form-group">
-									<label htmlFor="nomePropriedade">Nome Propriedade</label>
-									<input type="text" className="form-control" id="nomePropriedade" name="nomePropriedade"  placeholder="Ex:. Fazenda Boa Fé" />
+									<label htmlFor="proDsNome">Nome Propriedade</label>
+									<input type="text" className="form-control" id="proDsNome" name="proDsNome" onChange={this.onChange} value={proDsNome} placeholder="Ex:. Fazenda Boa Fé" />
 								</div>
 								<div className="form-group">
-									<label htmlFor="descPropriedade">Descrição da Propriedade</label>
-									<input type="text" className="form-control" id="descPropriedade" name="descPropriedade"  placeholder="Descrição geral da propriedade" />
+									<label htmlFor="proDsDescricao">Descrição</label>
+									<input type="text" className="form-control" id="proDsDescricao" name="proDsDescricao" onChange={this.onChange} value={proDsDescricao} placeholder="Ex:. Fazenda Boa Fé" />
+								</div>
+								<div className="form-group">
+									<label htmlFor="proVlTamanhoHectares">Tam. em hectáres</label>
+									<input type="text" className="form-control" id="proVlTamanhoHectares" name="proVlTamanhoHectares" onChange={this.onChange} value={proVlTamanhoHectares} placeholder="73" />
+								</div>
+								<div className="form-group">
+									<label htmlFor="proFlCultivo">Principal cultivo</label>
+									<input type="text" className="form-control" id="proFlCultivo" name="proFlCultivo" onChange={this.onChange} value={proFlCultivo} placeholder="Café" />
+								</div>
+								<div className="form-group">
+									<label htmlFor="proFlUf">UF</label>
+									<input type="text" className="form-control" id="proFlUf" name="proFlUf" onChange={this.onChange} value={proFlUf} placeholder="ES" />
 								</div>
 								<button type="button" onClick={this.onSubmit} className="btn btn-success">Salvar</button>
 							</fieldset>
 						</form>
 					</div>
 				</div>
-				<AgroTable data={this.state.data} columns={['ID. da propriedade','Nome','Descrição','Excluir','Editar']} table={'propriedade'} removePropriedade={this.removePropriedade}></AgroTable>
+				<AgroTable data={this.state.data} columns={['ID. da propriedade','Nome','Descrição','Tam. em hectáres','Cultivo','UF','Excluir','Editar']} table={'propriedade'} removePropriedade={this.removePropriedade} editPropriedade={this.editPropriedade}></AgroTable>
 			</div>
 		)
 	}

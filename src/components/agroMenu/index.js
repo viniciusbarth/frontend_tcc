@@ -34,7 +34,7 @@ class AgroMenu extends React.Component{
               <Link to="/home"><img src={require('./../../assets/img/logotipo.png')} alt="logo"  style={{width: 63}}/></Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/">Análise Preditiva | </a>
+              <a className="nav-link" href="/preditivo">Análise Preditiva  </a>
             </li>
             <UncontrolledDropdown nav inNavbar>
               <DropdownToggle nav caret>
@@ -50,7 +50,7 @@ class AgroMenu extends React.Component{
               </DropdownMenu>
             </UncontrolledDropdown>
             <li className="nav-item">
-              <a className="nav-link" href="/sobre"> |  Sobre</a>
+              <a className="nav-link" href="/sobre">   Sobre</a>
             </li>
           </ul>
           <ul className="navbar-nav">

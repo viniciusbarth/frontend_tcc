@@ -11,7 +11,7 @@ class AgroTable extends React.Component{
 
   render(){
 
-    let { columns, table, removeUser,editUser,removePropriedade, data } = this.props;
+    let { columns, table, removeUser,editUser,removePropriedade,editPropriedade, data } = this.props;
 
     // usuLsFuncoes
 
@@ -40,8 +40,11 @@ class AgroTable extends React.Component{
                 <td>{item.proCdPropriedade}</td>
                 <td>{item.proDsNome}</td>
                 <td>{item.proDsDescricao}</td>
+                <td>{item.proVlTamanhoHectares}</td>
+                <td>{item.proFlCultivo}</td>
+                <td>{item.proFlUf}</td>
                 <td><button onClick = { () => { props.removePropriedade(item.proCdPropriedade) }} className="waves-effect waves-light indigo lighten-2 btn">Remover</button></td>
-                <td><a href="/logout"><FontAwesomeIcon icon={faEdit} size="2x" style={{color: "black"}}/></a></td>
+                <td><a href onClick = { () => { props.editPropriedade(item) }}><FontAwesomeIcon icon={faEdit} size="2x" style={{color: "black"}}/></a></td>
               </tr>
           );
       });
@@ -71,7 +74,7 @@ class AgroTable extends React.Component{
             {this.renderColumns()}
           </tr>
         </thead>
-        <TableBody removeUser = {removeUser} editUser = {editUser} removePropriedade = {removePropriedade}></TableBody>
+        <TableBody removeUser = {removeUser} editUser = {editUser} removePropriedade = {removePropriedade} editPropriedade = {editPropriedade} ></TableBody>
       </Table> 
       </div>
     );

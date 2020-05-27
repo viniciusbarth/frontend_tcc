@@ -56,14 +56,29 @@ class FormUser extends Component {
 	}
 	
 	editUser = item => {
-		this.setState(item);
-  }
+		const {usuDsSenha, ...restItem} = item
+		this.setState(restItem);
+  	}
 
 
 	onSubmit = async e => {
 	e.preventDefault();
+	const {data, ...restItem} = this.state
+	if(!this.state.usuCdUsuario){
+		await api.post("/usuarios", restItem)
+			.then((res) =>{
+				this.setState(this.stateInicial);
+				this.componentDidMount();
+				ToastsStore.success("Usuário cadastrado com sucesso!");
+			})
+			.catch(error => {
+				ToastsStore.error(error.response.data.error.message)
+			});
+	}else{
 
-	await api.post("/usuarios", this.state)
+		const {usuCdUsuario, ...item} = restItem;
+
+		await api.put("/usuarios/alterar/"+this.state.usuCdUsuario, item)
 		.then((res) =>{
 			this.setState(this.stateInicial);
 			this.componentDidMount();
@@ -72,6 +87,8 @@ class FormUser extends Component {
 		.catch(error => {
 			ToastsStore.error(error.response.data.error.message)
 		});
+	}
+
 	};
 
 	async allUser() {
@@ -96,7 +113,7 @@ class FormUser extends Component {
 			<AgroMenu></AgroMenu>
 			<ToastsContainer store={ToastsStore}/>
 			<ol className="breadcrumb">
-				<li className="breadcrumb-item active">Home > Cadastro Usuário</li>
+				<li className="breadcrumb-item active">Cadastro Usuário</li>
 			</ol>
 			<div style={{ margin: 20 }}>
 				<div className="jumbotron">
@@ -124,9 +141,9 @@ class FormUser extends Component {
 								<FormGroup>
 									<Label for="usuLsFuncoes">Funções</Label>
 									<Input type="select" name="usuLsFuncoes" id="usuLsFuncoes" onChange={this.onChange} value={usuLsFuncoes}>
-										<option value="USUARIO">USUARIO</option>
-										<option value="OPERADOR">OPERADOR</option>
-										<option value="ADMIN">ADMIN</option>
+										<option >USUARIO</option>
+										<option >OPERADOR</option>
+										<option >ADMIN</option>
 									</Input>
 								</FormGroup>
 							</Col>

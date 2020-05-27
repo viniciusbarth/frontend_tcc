@@ -37,9 +37,29 @@
     font-size: 16px;
     width: 271px;
 }
+input{
+    background: transparent;
+}
 
 
 .buttonCadastrar:hover{
     cursor: pointer;
     background-color: tomato;
+}
+
+input{
+    color: black;
+}
+
+input[value]{
+    color: black;
+}
+
+input[value]:focus{
+    /* color: black; */
+    border-color: green;
+}
+
+input[value]{
+    color: black;
 }

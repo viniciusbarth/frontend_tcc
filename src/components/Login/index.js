@@ -40,7 +40,7 @@ class Login extends React.Component{
         this.props.history.push("/home");
       })
       .catch(error => {
-        ToastsStore.error(error.response.data)
+        ToastsStore.error(error.response.data.error.message)
       });
   };
 
