@@ -1,0 +1,8 @@
+.alignDate{
+    display: flex;
+    justify-content: center;
+}
+
+.alignCards{
+    display: flex;
+}
