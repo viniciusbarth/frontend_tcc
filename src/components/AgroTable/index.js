@@ -49,7 +49,7 @@ class AgroTable extends React.Component{
               </tr>
           );
       });
-      }else if(table === 'cultura'){
+      }else if(table === 'Cultura'){
         linhas = data.map((item) => {
           return (
               <tr key={item.id}>

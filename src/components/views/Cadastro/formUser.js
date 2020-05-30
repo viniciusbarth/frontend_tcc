@@ -6,6 +6,9 @@ import AgroMenu from '../../AgroMenu';
 import {ToastsStore, ToastsContainer} from 'react-toasts';
 import { Col, Row, Button, Form, FormGroup, Label, Input  } from 'reactstrap';
 
+import { Multiselect } from 'react-widgets'
+import 'react-widgets/dist/css/react-widgets.css';
+
 import api from "../../../services/api";
 import AgroTable from '../../AgroTable';
 
@@ -19,7 +22,7 @@ class FormUser extends Component {
 			usuDsNome:'',
 			usuDsEmail : '',
 			usuDsSenha: '',
-			usuLsFuncoes:['USUARIO'],
+			usuLsFuncoes : ['USUARIO','OPERADOR','ADMIN'],
 			data:[]
 		}
 
@@ -28,27 +31,21 @@ class FormUser extends Component {
 	
 	
 	onChange = (event) =>{
-	let valor = event.target.value;
-	
-	if(event.target.id === 'usuLsFuncoes'){
-		let arrayAux = [];
-		[...event.target.selectedOptions].forEach(element => {
-			arrayAux.push(element.index)
-		});
-		valor = arrayAux;
-	}
-	const nomeDoCampo = event.target.name;
-
-	if(nomeDoCampo === 'usuLsFuncoes'){
-		
-		this.setState({
-			[nomeDoCampo] : valor
-		})
+	let valor;
+	let nomeDoCampo
+	if(event.target !== undefined)	{
+		valor = event.target.value;
+		nomeDoCampo = event.target.name;
 	}else{
-		this.setState({
-			[nomeDoCampo] : valor
-		})
+		valor = event;
+		nomeDoCampo = 'usuLsFuncoes'
 	}
+	
+
+	this.setState({
+		[nomeDoCampo] : valor
+	})
+	
 	};
 
 
@@ -86,14 +83,15 @@ class FormUser extends Component {
 
 		const {usuCdUsuario, ...item} = restItem;
 
-		await api.put("/usuarios/alterar/"+this.state.usuCdUsuario, item)
+		await api.put("/usuarios/"+this.state.usuCdUsuario, item)
 		.then((res) =>{
 			this.setState(this.stateInicial);
 			this.componentDidMount();
 			ToastsStore.success("Usuário cadastrado com sucesso!");
 		})
 		.catch(error => {
-			ToastsStore.error(error.response.data.error.message)
+			console.log(error);
+			// ToastsStore.error(error.response.data.error.message)
 		});
 	}
 
@@ -116,6 +114,7 @@ class FormUser extends Component {
 	render(){
 
 	const {usuDsNome,usuDsEmail,usuDsSenha,usuLsFuncoes} = this.state;
+
 	return (
 		<div>
 			<AgroMenu></AgroMenu>
@@ -146,14 +145,17 @@ class FormUser extends Component {
 								</FormGroup>
 							</Col>
 							<Col md={6}>
-								<FormGroup>
-									<Label for="usuLsFuncoes">Funções</Label>
-									<Input type="select" name="usuLsFuncoes" id="usuLsFuncoes" onChange={this.onChange} value={usuLsFuncoes} multiple>
-										<option >USUARIO</option>
-										<option >OPERADOR</option>
-										<option >ADMIN</option>
-									</Input>
-								</FormGroup>
+							<FormGroup>
+								<Label for="usuLsFuncoes">Funções</Label>
+								<Multiselect
+									name="usuLsFuncoes" 
+									id="usuLsFuncoes"
+									data={this.stateInicial.usuLsFuncoes}
+									onChange={this.onChange} value={usuLsFuncoes}
+									valueField='id'
+									textField='name'
+								/>
+							</FormGroup>
 							</Col>
 						</Row>
 						<Button color="success" onClick={this.onSubmit}>Salvar</Button>

@@ -55,7 +55,7 @@ export default class formCultura extends React.Component {
 	};
 
 	async componentDidMount() {
-		await api.get("/propriedades/allpropriedades")
+		await api.get("/cultura/all")
 		.then((res) =>{
 			this.setState({ data: res.data })
 		})
@@ -68,7 +68,7 @@ export default class formCultura extends React.Component {
 		e.preventDefault();
 		const {data, ...restConfig} = this.state;
 		if(!this.state.id){
-			await api.post("/propriedades", restConfig)
+			await api.post("/cultura", restConfig)
 				.then((res) =>{
 					this.setState(this.stateInicial);
 					this.componentDidMount();
@@ -112,7 +112,7 @@ export default class formCultura extends React.Component {
 									<input type="text" className="form-control" id="culDsNome" name="culDsNome" onChange={this.onChange} value={culDsNome} placeholder="Ex:. Café" />
 								</div>
 								<div className="form-group">
-									<label htmlFor="CulMmIdeal">Descrição</label>
+									<label htmlFor="CulMmIdeal">Milímetros ideias para a cultura</label>
 									<input type="text" className="form-control" id="CulMmIdeal" name="CulMmIdeal" onChange={event => this.setState({culMmIdeal: event.target.value.replace(/\D/,'')})} value={culMmIdeal} placeholder="Ex:. 126" />
 								</div>
 								<button type="button" onClick={this.onSubmit} className="btn btn-success">Salvar</button>
