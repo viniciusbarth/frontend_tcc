@@ -43,6 +43,7 @@ class AgroTable extends React.Component{
                 <td>{item.proVlTamanhoHectares}</td>
                 <td>{item.proFlCultivo}</td>
                 <td>{item.proFlUf}</td>
+                <td>{item.proMmIdeal}</td>
                 <td><button onClick = { () => { props.removePropriedade(item.proCdPropriedade) }} className="waves-effect waves-light indigo lighten-2 btn">Remover</button></td>
                 <td><a href onClick = { () => { props.editPropriedade(item) }}><FontAwesomeIcon icon={faEdit} size="2x" style={{color: "black"}}/></a></td>
               </tr>

@@ -28,17 +28,25 @@ class FormUser extends Component {
 	
 	
 	onChange = (event) =>{
-	const valor = event.target.value;
+	let valor = event.target.value;
+	
+	if(event.target.id === 'usuLsFuncoes'){
+		let arrayAux = [];
+		[...event.target.selectedOptions].forEach(element => {
+			arrayAux.push(element.index)
+		});
+		valor = arrayAux;
+	}
 	const nomeDoCampo = event.target.name;
-
-	this.setState({
-		[nomeDoCampo] : valor
-	})
 
 	if(nomeDoCampo === 'usuLsFuncoes'){
 		
 		this.setState({
-			[nomeDoCampo] : [valor]
+			[nomeDoCampo] : valor
+		})
+	}else{
+		this.setState({
+			[nomeDoCampo] : valor
 		})
 	}
 	};
@@ -140,7 +148,7 @@ class FormUser extends Component {
 							<Col md={6}>
 								<FormGroup>
 									<Label for="usuLsFuncoes">Funções</Label>
-									<Input type="select" name="usuLsFuncoes" id="usuLsFuncoes" onChange={this.onChange} value={usuLsFuncoes}>
+									<Input type="select" name="usuLsFuncoes" id="usuLsFuncoes" onChange={this.onChange} value={usuLsFuncoes} multiple>
 										<option >USUARIO</option>
 										<option >OPERADOR</option>
 										<option >ADMIN</option>

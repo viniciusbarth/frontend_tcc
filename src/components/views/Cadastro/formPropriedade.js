@@ -16,6 +16,7 @@ export default class Login extends React.Component {
 			proDsDescricao : '',
 			proFlCultivo: '',
 			proFlUf: '',
+			proMmIdeal: '',
 			proVlTamanhoHectares:'',
 			data:[]
 		}
@@ -96,7 +97,7 @@ export default class Login extends React.Component {
 
 	render(){
 
-		const {proDsNome,proDsDescricao,proFlCultivo,proFlUf,proVlTamanhoHectares} = this.state;
+		const {proDsNome,proDsDescricao,proFlCultivo,proFlUf,proVlTamanhoHectares,proMmIdeal} = this.state;
 
 		return (
 			<div>
@@ -130,12 +131,16 @@ export default class Login extends React.Component {
 									<label htmlFor="proFlUf">UF</label>
 									<input type="text" className="form-control" id="proFlUf" name="proFlUf" onChange={this.onChange} value={proFlUf} placeholder="ES" />
 								</div>
+								<div className="form-group">
+									<label htmlFor="proMmIdeal">Precipitação(mm) ideal para o cultivo</label>
+									<input type="text" className="form-control" id="proMmIdeal" name="proMmIdeal" onChange={event => this.setState({proMmIdeal: event.target.value.replace(/\D/,'')})} value={proMmIdeal} placeholder="126"/>
+								</div>
 								<button type="button" onClick={this.onSubmit} className="btn btn-success">Salvar</button>
 							</fieldset>
 						</form>
 					</div>
 				</div>
-				<AgroTable data={this.state.data} columns={['ID. da propriedade','Nome','Descrição','Tam. em hectáres','Cultivo','UF','Excluir','Editar']} table={'propriedade'} removePropriedade={this.removePropriedade} editPropriedade={this.editPropriedade}></AgroTable>
+				<AgroTable data={this.state.data} columns={['ID. da propriedade','Nome','Descrição','Tam. em hectáres','Cultivo','UF','Mm ideal para o cultivo','Excluir','Editar']} table={'propriedade'} removePropriedade={this.removePropriedade} editPropriedade={this.editPropriedade}></AgroTable>
 			</div>
 		)
 	}
