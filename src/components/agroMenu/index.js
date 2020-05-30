@@ -47,6 +47,9 @@ class AgroMenu extends React.Component{
                 <DropdownItem href="/cadastro-propriedade">
                   Cadastro de Propriedade
                 </DropdownItem>
+                <DropdownItem href="/cadastro-cultura">
+                  Cadastro de Cultura
+                </DropdownItem>
               </DropdownMenu>
             </UncontrolledDropdown>
             <li className="nav-item">

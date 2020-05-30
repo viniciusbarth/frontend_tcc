@@ -7,6 +7,7 @@ import FormPropriedade from './components/views/Cadastro/formPropriedade';
 import Sobre from './components/views/Sobre';
 import FormUser from './components/views/Cadastro/formUser';
 import Predictive from "./components/views/Predictive";
+import formCultura from "./components/views/Cadastro/formCultura";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -44,6 +45,7 @@ const App = () => (
         <PrivateRoute exact path="/preditivo" component={Predictive} />
         <NoAuthRoute path="/login" component={Login} />
         <PrivateRoute exact path="/cadastro-propriedade" component={FormPropriedade} />
+        <PrivateRoute exact path="/cadastro-cultura" component={formCultura} />
         <PrivateRoute exact path="/cadastro-usuario" component={FormUser} />
         <PrivateRoute exact path="/sobre" component={Sobre} />
         <PrivateRoute

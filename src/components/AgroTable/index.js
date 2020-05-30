@@ -11,7 +11,7 @@ class AgroTable extends React.Component{
 
   render(){
 
-    let { columns, table, removeUser,editUser,removePropriedade,editPropriedade, data } = this.props;
+    let { columns, table, removeUser,editUser,removePropriedade,editPropriedade,removeCultura,editCultura, data } = this.props;
 
     // usuLsFuncoes
 
@@ -49,6 +49,18 @@ class AgroTable extends React.Component{
               </tr>
           );
       });
+      }else if(table === 'cultura'){
+        linhas = data.map((item) => {
+          return (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.culDsNome}</td>
+                <td>{item.culMmIdeal}</td>
+                <td><button onClick = { () => { props.removeCultura(item.id) }} className="waves-effect waves-light indigo lighten-2 btn">Remover</button></td>
+                <td><a href onClick = { () => { props.editCultura(item) }}><FontAwesomeIcon icon={faEdit} size="2x" style={{color: "black"}}/></a></td>
+              </tr>
+          );
+      });
       }
         return(
             <tbody>
@@ -75,7 +87,9 @@ class AgroTable extends React.Component{
             {this.renderColumns()}
           </tr>
         </thead>
-        <TableBody removeUser = {removeUser} editUser = {editUser} removePropriedade = {removePropriedade} editPropriedade = {editPropriedade} ></TableBody>
+        <TableBody removeUser = {removeUser} editUser = {editUser} removePropriedade = {removePropriedade} editPropriedade = {editPropriedade} removeCultura = {removeCultura} editCultura = {editCultura} >
+
+        </TableBody>
       </Table> 
       </div>
     );

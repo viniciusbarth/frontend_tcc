@@ -5,7 +5,7 @@ import AgroMenu from '../../AgroMenu';
 import api from "../../../services/api";
 import {ToastsStore, ToastsContainer} from 'react-toasts';
 import AgroTable from '../../AgroTable';
-export default class Login extends React.Component {
+export default class fomPropriedade extends React.Component {
 	
 
 	constructor(props) {
