@@ -52,11 +52,11 @@ class AgroTable extends React.Component{
       }else if(table === 'Cultura'){
         linhas = data.map((item) => {
           return (
-              <tr key={item.id}>
-                <td>{item.id}</td>
+              <tr key={item.culCdCultivo}>
+                <td>{item.culCdCultivo}</td>
                 <td>{item.culDsNome}</td>
-                <td>{item.culMmIdeal}</td>
-                <td><button onClick = { () => { props.removeCultura(item.id) }} className="waves-effect waves-light indigo lighten-2 btn">Remover</button></td>
+                <td>{item.culVlMmIdeal}</td>
+                <td><button onClick = { () => { props.removeCultura(item.culCdCultivo) }} className="waves-effect waves-light indigo lighten-2 btn">Remover</button></td>
                 <td><a href onClick = { () => { props.editCultura(item) }}><FontAwesomeIcon icon={faEdit} size="2x" style={{color: "black"}}/></a></td>
               </tr>
           );

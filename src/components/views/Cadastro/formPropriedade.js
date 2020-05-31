@@ -71,17 +71,6 @@ export default class fomPropriedade extends React.Component {
 	onSubmit = async e => {
 		e.preventDefault();
 		const {data, ...restConfig} = this.state;
-		if(!this.state.proCdPropriedade){
-			await api.post("/propriedades", restConfig)
-				.then((res) =>{
-					this.setState(this.stateInicial);
-					this.componentDidMount();
-					ToastsStore.success("Propriedade cadastrada com sucesso!");
-				})
-				.catch(error => {
-					ToastsStore.error(error.response.data.error.message)
-				});
-		}else{
 			await api.put("/propriedades/"+this.state.proCdPropriedade, restConfig)
 			.then((res) =>{
 				this.setState(this.stateInicial);
@@ -89,9 +78,9 @@ export default class fomPropriedade extends React.Component {
 				ToastsStore.success("Propriedade cadastrada com sucesso!");
 			})
 			.catch(error => {
-				ToastsStore.error(error.response.data.error.message)
+				// ToastsStore.error(error.response.data.error.message)
 			});
-		}
+		
 	};
 
 

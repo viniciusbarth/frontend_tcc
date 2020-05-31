@@ -5,6 +5,12 @@ import AgroMenu from '../../AgroMenu';
 import api from "../../../services/api";
 import {ToastsStore, ToastsContainer} from 'react-toasts';
 import AgroTable from '../../AgroTable';
+
+import { DropdownList } from 'react-widgets'
+import 'react-widgets/dist/css/react-widgets.css';
+
+
+
 export default class formCultura extends React.Component {
 	
 
@@ -13,7 +19,7 @@ export default class formCultura extends React.Component {
 	
 		this.stateInicial = {
 			culDsNome:'',
-			culMmIdeal: '',
+			culVlMmIdeal: '',
 			data:[]
 		}
 
@@ -62,12 +68,20 @@ export default class formCultura extends React.Component {
 		.catch(error => {
 			ToastsStore.error(error.response.data)
 		});
+
+		// await api.get("/propriedades/allpropriedades")
+		// .then((res) =>{
+		// 	this.setState({ data: res.data })
+		// })
+		// .catch(error => {
+		// 	ToastsStore.error(error.response.data)
+		// });
 	}
 
 	onSubmit = async e => {
 		e.preventDefault();
 		const {data, ...restConfig} = this.state;
-		if(!this.state.id){
+		if(!this.state.culCdCultivo){
 			await api.post("/cultura", restConfig)
 				.then((res) =>{
 					this.setState(this.stateInicial);
@@ -78,7 +92,7 @@ export default class formCultura extends React.Component {
 					ToastsStore.error(error.response.data.error.message)
 				});
 		}else{
-			await api.put("/cultura/"+this.state.id, restConfig)
+			await api.put("/cultura/"+this.state.culCdCultivo, restConfig)
 			.then((res) =>{
 				this.setState(this.stateInicial);
 				this.componentDidMount();
@@ -93,8 +107,8 @@ export default class formCultura extends React.Component {
 
 	render(){
 
-		const {culDsNome,culMmIdeal} = this.state;
-
+		const {culDsNome,culVlMmIdeal} = this.state;
+		// let propriedades = this.state.propriedades;
 		return (
 			<div>
 				<AgroMenu></AgroMenu>
@@ -107,13 +121,23 @@ export default class formCultura extends React.Component {
 						<form>
 							<fieldset>
 								<legend>Cadastro de Cultura</legend>
-								<div className="form-group">
-									<label htmlFor="culDsNome">Nome Cultura</label>
-									<input type="text" className="form-control" id="culDsNome" name="culDsNome" onChange={this.onChange} value={culDsNome} placeholder="Ex:. Café" />
-								</div>
-								<div className="form-group">
-									<label htmlFor="CulMmIdeal">Milímetros ideias para a cultura</label>
-									<input type="text" className="form-control" id="CulMmIdeal" name="CulMmIdeal" onChange={event => this.setState({culMmIdeal: event.target.value.replace(/\D/,'')})} value={culMmIdeal} placeholder="Ex:. 126" />
+								<div className="row">
+									<div className="form-group col-sm-6">
+										<label htmlFor="culDsNome">Nome Cultura</label>
+										<input type="text" className="form-control" id="culDsNome" name="culDsNome" onChange={this.onChange} value={culDsNome} placeholder="Ex:. Café" />
+									</div>
+									<div className="form-group col-sm-6">
+										<label htmlFor="culVlMmIdeal">Milímetros ideias para a cultura</label>
+										<input type="text" className="form-control" id="culVlMmIdeal" name="culVlMmIdeal" onChange={event => this.setState({culVlMmIdeal: event.target.value.replace(/\D/,'')})} value={culVlMmIdeal} placeholder="Ex:. 126" />
+									</div>
+									{/* <div className="form-group col-sm-3">
+										<label htmlFor="culVlMmIdeal">Milímetros ideias para a cultura</label>
+										<DropdownList
+											data={propriedades}
+											value={this.state.value}
+											onChange={value => this.setState({ value })}
+										/>
+									</div> */}
 								</div>
 								<button type="button" onClick={this.onSubmit} className="btn btn-success">Salvar</button>
 							</fieldset>

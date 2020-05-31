@@ -151,7 +151,8 @@ class FormUser extends Component {
 									name="usuLsFuncoes" 
 									id="usuLsFuncoes"
 									data={this.stateInicial.usuLsFuncoes}
-									onChange={this.onChange} value={usuLsFuncoes}
+									onChange={this.onChange} 
+									value={usuLsFuncoes}
 									valueField='id'
 									textField='name'
 								/>
