@@ -17,7 +17,7 @@ class AgroMenu extends React.Component{
 
   onClick = () => {
     
-    this.props.history.push("/home");
+    this.props.history.push("/preditivo");
 
   };
 
@@ -31,7 +31,7 @@ class AgroMenu extends React.Component{
         <div className="collapse navbar-collapse" id="navbarColor01">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <Link to="/home"><img src={require('./../../assets/img/logotipo.png')} alt="logo"  style={{width: 63}}/></Link>
+              <Link to="/preditivo"><img src={require('./../../assets/img/logotipo.png')} alt="logo"  style={{width: 63}}/></Link>
             </li>
             <li className="nav-item">
               <a className="nav-link" href="/preditivo">Análise Preditiva  </a>

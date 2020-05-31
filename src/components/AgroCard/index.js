@@ -6,10 +6,10 @@ const AgroCard = (props) => {
   return (
     <div>
       <div>
-        <p>Mês: {preDsMesAno}</p>
-        <p>Milímetros de chuva:{preVlPrecipitacao}</p>
-        <p>Temperatura Média:{preVlTemperaturaMedia}</p>
-        <p>Observação:{preTxObservacao}</p>
+        <p style={{display:"flex",justifyContent:"center",fontSize:"20px"}}><span style={{color:"black",fontWeight:"bold"}}>Mês: </span> {preDsMesAno}</p>
+        <p><span style={{color:"black",fontWeight:"bold"}}>Milímetros de chuva: </span>{preVlPrecipitacao}</p>
+        <p><span style={{color:"black",fontWeight:"bold"}}>Temperatura Média: </span>{preVlTemperaturaMedia}</p>
+        <p><span style={{color:"black",fontWeight:"bold"}}>Observação: </span>{preTxObservacao}</p>
       </div>
     </div>
   );

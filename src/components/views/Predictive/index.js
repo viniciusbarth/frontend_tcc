@@ -74,9 +74,9 @@ class Predictive extends React.Component {
 	renderCards = () =>{
 		return this.state.cards.map(item =>{
 			return(
-						<div className="col-sm-2" style={{border:"1px solid black", margin:"5px"}}>
-							<AgroCard config={item}></AgroCard>
-						</div>
+				<div className="col-sm-2" style={{border:"1px solid black", margin:"5px",borderRadius:"15px", backgroundColor:"white",padding:"15px"}}>
+					<AgroCard config={item}></AgroCard>
+				</div>
 			)
 		})
 	}
@@ -84,14 +84,14 @@ class Predictive extends React.Component {
 	render() {
 
 		return (
-			<div>
+			<div className="backgroundPredict">
 				<AgroMenu></AgroMenu>
 				<ToastsContainer store={ToastsStore}/>
 				<ol className="breadcrumb">
 					<li className="breadcrumb-item active">Análise preditiva</li>
 				</ol>
 				<div className="jumbotron">
-					<h3 style={{textAlign: "center"}}>Análise Preditiva</h3>
+					<h3 style={{textAlign: "center"}}>ANÁLISE PREDITIVA</h3>
 					<Col md={12} className="alignDate">
 						{/* <Col md={2}>
 							<FormGroup>
@@ -112,10 +112,12 @@ class Predictive extends React.Component {
 									onChange={value => this.setState({ value })}
 									valueField='id'
 									textField='name'
-									defaultValue={1}
+									emptyList='testesss'
+									filterPlaceholder='testresdgvvre'
+									// defaultValue={1}
 								/>
 							</FormGroup>
-						<button type="button" class="btn btn-primary" style={{marginLeft: "33%"}} onClick={this.gerarPredicao}>Gerar</button>
+						<button type="button" class="btn btn-primary" style={{marginLeft: "33%"}} disabled={!this.state.value.id} onClick={this.gerarPredicao}>Gerar</button>
 						</Col>
 					</Col>
 				</div>

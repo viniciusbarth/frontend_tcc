@@ -29,7 +29,7 @@ const NoAuthRoute = ({ component: Component, ...rest }) => (
     {...rest}
     render={props =>
       isAuthenticated() ? (
-        <Redirect to={{ pathname: "/home", state: { from: props.location } }} />
+        <Redirect to={{ pathname: "/preditivo", state: { from: props.location } }} />
       ) : (
         <Component {...props} />
       )
@@ -41,7 +41,7 @@ const App = () => (
   <>
     <BrowserRouter>
       <Switch>
-        <PrivateRoute exact path="/home" component={Home} />
+        <PrivateRoute exact path="/preditivo" component={Predictive} />
         <PrivateRoute exact path="/preditivo" component={Predictive} />
         <NoAuthRoute path="/login" component={Login} />
         <PrivateRoute exact path="/cadastro-propriedade" component={FormPropriedade} />
@@ -59,7 +59,7 @@ const App = () => (
           path="/"
           exact
           component={() => {
-            return isAuthenticated() ? <Redirect to={{ pathname: "/home" }}/> : <Redirect to={{ pathname: "/login" }}/>;
+            return isAuthenticated() ? <Redirect to={{ pathname: "/preditivo" }}/> : <Redirect to={{ pathname: "/login" }}/>;
           }}
         />
         <Route

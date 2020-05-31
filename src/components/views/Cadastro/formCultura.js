@@ -20,6 +20,8 @@ export default class formCultura extends React.Component {
 		this.stateInicial = {
 			culDsNome:'',
 			culVlMmIdeal: '',
+			culVlTempMinIdeal: '',
+			culVlTempMaxIdeal: '',
 			data:[]
 		}
 
@@ -107,7 +109,7 @@ export default class formCultura extends React.Component {
 
 	render(){
 
-		const {culDsNome,culVlMmIdeal} = this.state;
+		const {culDsNome,culVlMmIdeal,culVlTempMinIdeal,culVlTempMaxIdeal} = this.state;
 		// let propriedades = this.state.propriedades;
 		return (
 			<div>
@@ -130,6 +132,14 @@ export default class formCultura extends React.Component {
 										<label htmlFor="culVlMmIdeal">Milímetros ideias para a cultura</label>
 										<input type="text" className="form-control" id="culVlMmIdeal" name="culVlMmIdeal" onChange={event => this.setState({culVlMmIdeal: event.target.value.replace(/\D/,'')})} value={culVlMmIdeal} placeholder="Ex:. 126" />
 									</div>
+									<div className="form-group col-sm-6">
+										<label htmlFor="culVlTempMinIdeal">Temperatura Mín.</label>
+										<input type="text" className="form-control" id="culVlTempMinIdeal" name="culVlTempMinIdeal" onChange={event => this.setState({culVlTempMinIdeal: event.target.value.replace(/\D/,'')})} value={culVlTempMinIdeal} placeholder="Ex:. 18" />
+									</div>
+									<div className="form-group col-sm-6">
+										<label htmlFor="culVlTempMaxIdeal">Temperatura Máx.</label>
+										<input type="text" className="form-control" id="culVlTempMaxIdeal" name="culVlTempMaxIdeal" onChange={event => this.setState({culVlTempMaxIdeal: event.target.value.replace(/\D/,'')})} value={culVlTempMaxIdeal} placeholder="Ex:. 25" />
+									</div>
 									{/* <div className="form-group col-sm-3">
 										<label htmlFor="culVlMmIdeal">Milímetros ideias para a cultura</label>
 										<DropdownList
@@ -139,12 +149,12 @@ export default class formCultura extends React.Component {
 										/>
 									</div> */}
 								</div>
-								<button type="button" onClick={this.onSubmit} className="btn btn-success">Salvar</button>
+								<button type="button" onClick={this.onSubmit} disabled={!this.state.culDsNome} className="btn btn-success">Salvar</button>
 							</fieldset>
 						</form>
 					</div>
 				</div>
-				<AgroTable data={this.state.data} columns={['ID. da Cultura','Nome','Mm ideal para o cultivo','Excluir','Editar']} table={'Cultura'} removeCultura={this.removeCultura} editCultura={this.editCultura}></AgroTable>
+				<AgroTable data={this.state.data} columns={['ID. da Cultura','Nome','Mm ideal para o cultivo','Temperatura Mín.','Temperatura Máx.','Excluir','Editar']} table={'Cultura'} removeCultura={this.removeCultura} editCultura={this.editCultura}></AgroTable>
 			</div>
 		)
 	}

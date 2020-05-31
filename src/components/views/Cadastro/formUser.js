@@ -135,7 +135,7 @@ class FormUser extends Component {
 							<Col md={6}>
 								<FormGroup>
 									<Label for="usuDsEmail">E-mail</Label>
-									<Input type="email" name="usuDsEmail" id="usuDsEmail" onChange={this.onChange} value={usuDsEmail} placeholder="Digite um e-mail válido joaosilva@gmail.com" />
+									<Input type="email" name="usuDsEmail" id="usuDsEmail" onChange={this.onChange} value={usuDsEmail} placeholder="Digite um e-mail válido joaosilva@gmail.com" required="true"/>
 								</FormGroup>
 							</Col>
 							<Col md={6}>
@@ -159,7 +159,7 @@ class FormUser extends Component {
 							</FormGroup>
 							</Col>
 						</Row>
-						<Button color="success" onClick={this.onSubmit}>Salvar</Button>
+						<Button color="success" disabled={!this.state.usuDsNome} onClick={this.onSubmit}>Salvar</Button>
 					</Form>
 				</div>
 			</div>
