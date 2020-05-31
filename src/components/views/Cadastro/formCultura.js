@@ -6,7 +6,7 @@ import api from "../../../services/api";
 import {ToastsStore, ToastsContainer} from 'react-toasts';
 import AgroTable from '../../AgroTable';
 
-import { DropdownList } from 'react-widgets'
+// import { DropdownList } from 'react-widgets'
 import 'react-widgets/dist/css/react-widgets.css';
 
 

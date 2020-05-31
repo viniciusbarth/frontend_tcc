@@ -3,7 +3,7 @@ import React from 'react';
 import "./predictive.css";
 import AgroMenu from '../../AgroMenu';
 
-import {Col, FormGroup, Label, Input,Row  } from 'reactstrap';
+import {Col, FormGroup, Label  } from 'reactstrap';
 import AgroCard from '../../AgroCard';
 
 import api from "../../../services/api";
@@ -18,7 +18,9 @@ class Predictive extends React.Component {
 		super(props);
 	
 		this.stateInicial = {
-			value: 'Nenhum'
+			value: 'Nenhum',
+			culturas: ['treste','teffcd'],
+			cards: []
 		}
 
 		this.state = this.stateInicial;
@@ -42,21 +44,26 @@ class Predictive extends React.Component {
 		await api.get("/cultura/all")
 		.then((res) =>{
 			let arrayFormatado =[];
+			let obj = {};
 			res.data.forEach(element => {
-				arrayFormatado.push(element.culCdPropriedade)
+				obj = {
+					id : element.culCdCultivo,
+					name: element.culDsNome
+				}
+				arrayFormatado.push(obj)
 			});
 			this.setState({ culturas: arrayFormatado })
 		})
 		.catch(error => {
 			ToastsStore.error(error.response.data)
 		});
-	}
+	};
 
-	async gerarPredicao() {
-
-		await api.get("/predicao/anual"+ this.state.valor)
+	gerarPredicao = async() => {
+		console.log(this.state)
+		await api.get("/predicao/anual/"+ this.state.value.id)
 		.then((res) =>{
-			console.log(res)
+			this.setState({cards : res.data})
 		})
 		.catch(error => {
 			ToastsStore.error(error.response.data)
@@ -64,8 +71,18 @@ class Predictive extends React.Component {
 		
 	}
 
+	renderCards = () =>{
+		return this.state.cards.map(item =>{
+			return(
+						<div className="col-sm-2" style={{border:"1px solid black", margin:"5px"}}>
+							<AgroCard config={item}></AgroCard>
+						</div>
+			)
+		})
+	}
+
 	render() {
-		let culturas = this.state.culturas;
+
 		return (
 			<div>
 				<AgroMenu></AgroMenu>
@@ -76,7 +93,7 @@ class Predictive extends React.Component {
 				<div className="jumbotron">
 					<h3 style={{textAlign: "center"}}>Análise Preditiva</h3>
 					<Col md={12} className="alignDate">
-						<Col md={2}>
+						{/* <Col md={2}>
 							<FormGroup>
 								<Label for="exampleDate" style={{display: "flex",justifyContent: "center",marginTop: "15px"}}>Data para a predição</Label>
 								<Input
@@ -85,44 +102,26 @@ class Predictive extends React.Component {
 									id="exampleDate"
 								/>
 							</FormGroup>
-						<button type="button" class="btn btn-primary" style={{marginLeft: "33%"}} onClick={this.gerarPredicao}>Gerar</button>
-					</Col>
+					</Col> */}
 					<Col md={2}>
 							<FormGroup>
 								<Label for="exampleDate" style={{display: "flex",justifyContent: "center",marginTop: "15px"}}>Selecione uma cultura para feedback</Label>
 								<DropdownList
-									data={culturas}
+									data={this.state.culturas}
 									value={this.state.value}
 									onChange={value => this.setState({ value })}
+									valueField='id'
+									textField='name'
+									defaultValue={1}
 								/>
 							</FormGroup>
+						<button type="button" class="btn btn-primary" style={{marginLeft: "33%"}} onClick={this.gerarPredicao}>Gerar</button>
 						</Col>
 					</Col>
 				</div>
-
-				<Col className="col-sm-12 alignCards">
-						<div className="col-sm-2">
-							<AgroCard></AgroCard>
-						</div>
-						<div className="col-sm-2">
-							<AgroCard></AgroCard>
-						</div>
-						<div className="col-sm-2">
-							<AgroCard></AgroCard>
-						</div>
-						<div className="col-sm-2">
-							<AgroCard></AgroCard>
-						</div>
-						<div className="col-sm-2">
-							<AgroCard></AgroCard>
-						</div>
-						<div className="col-sm-2">
-							<AgroCard></AgroCard>
-						</div>
-						<div className="col-sm-2">
-							<AgroCard></AgroCard>
-						</div>
-				</Col>
+				<div className="row col-sm-12 alignCards" style={{display:"flex",justifyContent:"center"}}>
+					{this.renderCards()}
+				</div>
 
 			</div>
 		)
