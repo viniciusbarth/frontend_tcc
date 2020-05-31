@@ -54,11 +54,11 @@ class Login extends React.Component{
             </div>
             <form className="form-signin">
               <div className="form-label-group padd-10">
-                <input type="email" id="inputUser" name="usuDsEmail"  onChange={this.onChange} value={this.state.usuDsEmail} className="form-control" placeholder="Nome de usuário" required></input>
+                <input type="email" id="inputUser" name="usuDsEmail"  onChange={this.onChange} value={this.state.usuDsEmail} className="form-control inputLogin" placeholder="Email do usuário" required></input>
               </div>
 
               <div className="form-label-group padd-10">
-                <input type="password" id="inputPassword" name="usuDsSenha" onChange={this.onChange} value={this.state.usuDsSenha} className="form-control" placeholder="Senha" required></input>
+                <input type="password" id="inputPassword" name="usuDsSenha" onChange={this.onChange} value={this.state.usuDsSenha} className="form-control inputSenha" placeholder="Senha" required></input>
               </div>
 
               <button className="buttonLogin" type="btn btn-primary" onClick={this.onSubmit} name="" value="Login">Login</button>

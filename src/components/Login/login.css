@@ -59,10 +59,12 @@ h1{
     font-size: 16px;
 }
 
-.login input[type="email"]:hover, input[type="password"]:hover{
+
+.inputLogin:hover{
     border-bottom: 3px solid #19d629;
-    background-color: transparent;
-    /* font-size: 20px; */
+}
+.inputSenha:hover{
+    border-bottom: 3px solid #19d629;
 }
 
 .login .buttonLogin{
