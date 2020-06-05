@@ -74,7 +74,7 @@ class Predictive extends React.Component {
 	renderCards = () =>{
 		return this.state.cards.map(item =>{
 			return(
-				<div className="col-sm-2" style={{border:"1px solid black", margin:"5px",borderRadius:"15px", backgroundColor:"white",padding:"15px"}}>
+				<div className="col-sm-3" style={{border:"1px solid black", margin:"5px",borderRadius:"15px", backgroundColor:"white",padding:"15px"}}>
 					<AgroCard config={item}></AgroCard>
 				</div>
 			)
