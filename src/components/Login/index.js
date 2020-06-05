@@ -37,7 +37,7 @@ class Login extends React.Component{
         console.log('sucesso');
         ToastsStore.success("Sucesso!")
         login(res.headers.authorization.replace("Bearer ", ""));
-        this.props.history.push("/home");
+        this.props.history.push("/preditivo");
       })
       .catch(error => {
         ToastsStore.error(error.response.data.error.message)
