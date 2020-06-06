@@ -73,8 +73,17 @@ class Predictive extends React.Component {
 
 	renderCards = () =>{
 		return this.state.cards.map(item =>{
+			let color;
+			if(item.prevlCorCard === 0){
+				color = '#f8ff6b'
+			}else if(item.prevlCorCard === 1){
+				color = '#f56c67'
+			}else if(item.prevlCorCard === 2){
+				color = '#0ffa4e'
+			}
+
 			return(
-				<div className="col-sm-3" style={{border:"1px solid black", margin:"5px",borderRadius:"15px", backgroundColor:"white",padding:"15px"}}>
+		<div className="col-sm-3" style={{border:"1px solid black", margin:"5px",borderRadius:"15px", backgroundColor:color,padding:"15px"}}>
 					<AgroCard config={item}></AgroCard>
 				</div>
 			)
