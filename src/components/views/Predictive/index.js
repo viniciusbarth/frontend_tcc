@@ -83,7 +83,7 @@ class Predictive extends React.Component {
 			}
 
 			return(
-		<div className="col-sm-3" style={{border:"1px solid black", margin:"5px",borderRadius:"15px", borderColor:color,backgroundColor: "white",padding:"15px"}}>
+		<div className="col-sm-3" style={{border:"2px solid black", margin:"5px",borderRadius:"15px", borderColor:color,backgroundColor: "white",padding:"15px"}}>
 					<AgroCard config={item}></AgroCard>
 				</div>
 			)

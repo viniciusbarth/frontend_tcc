@@ -9,8 +9,8 @@ const AgroCard = (props) => {
         <p style={{display:"flex",justifyContent:"center",fontSize:"20px"}}><span style={{color:"black",fontWeight:"bold"}}>Mês: </span> {preDsMesAno}</p>
         <p><span style={{color:"black",fontWeight:"bold"}}>Milímetros de chuva: </span>{preVlPrecipitacao}</p>
         <p><span style={{color:"black",fontWeight:"bold"}}>Temperatura Média: </span>{preVlTemperaturaMedia}</p>
-        <p><span style={{color:"black",fontWeight:"bold"}}>Observação da Temperatura Média: </span>{preTxObservacaoTempMedia}</p>
-        <p><span style={{color:"black",fontWeight:"bold"}}>Observação da precipitação: </span>{preTxObservacaoPrecipitacao}</p>
+        <p><span style={{color:"black",fontWeight:"bold"}}>Resumo: </span>{preTxObservacaoPrecipitacao}</p>
+        <p><span style={{color:"black",fontWeight:"bold"}}></span>{preTxObservacaoTempMedia}</p>
       </div>
     </div>
   );
